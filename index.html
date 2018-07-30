@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script type="text/javascript" src="js/initialize.js"></script>
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+    <div class="ban"><img src="images/ban1.jpg" /></div>
+    <div class="dataList" style="display: none;">
+        <div class="item">
+            <img src="images/day-icon.png" alt="" />
+            <span>今日销额</span>
+            <b id='day_sal_amt'>0<label>万</label></b>
+        </div>
+        <div class="item">
+            <img src="images/month-icon.png" alt="" />
+            <span>月累计销额</span>
+            <b id='sal_amt'>0<label>万</label></b>
+        </div>
+        <div class="item">
+            <img src="images/finish-icon.png" alt="" />
+            <span>预计达成率</span>
+            <b id="dc">0<label>%</label></b>
+        </div>
+    </div>
+    <div class="navList">
+        <div class="item"><a href="biaodan.html"><img src="images/pinpaiduibi.png" alt=""><span>品牌对比</span></a></div>
+        <div class="item"><a href="KDLS.html"><img src="images/dianpupaihang.png" alt=""><span>店铺排行</span></a></div>
+        <div class="item"><a href="kuadianlingshou.html"><img src="images/quyupaihang.png" alt=""><span>区域排行</span></a></div>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="js/api.js"></script>
+<script>
+	var apiUrl = "http://tel.runsa.cn:8177/bi/router/runsasql/rest";
+	var params = {
+        "userId":"13812345678",
+        "va_months":5
+    };
+	$.ajax({
+        type: 'POST',
+        url: apiUrl,
+        dataType: 'json',
+        data:getRequestParams(params,'demo.sy.ds1'),
+        success: function (data) {
+            console.log(data)
+           
+        }
+    })
+	
+	/*$.ajax({
+        type: 'POST',
+        url: apiUrl,
+        dataType: 'json',
+        data:getRequestParams(params,'demo.sy.ds2'),
+        success: function (data) {
+            var count = data.list.length;
+			var divHtml = "";
+			for(var i=0; i<count; i++){
+                divHtml += '<div class="item"><a href="#"><img src="images/icon-1.png" alt=""><span>'+data.list[i].report_name+'</span></a></div>';
+            }
+			$("#datalist").append(divHtml);
+        }
+    })*/
+	
+</script>

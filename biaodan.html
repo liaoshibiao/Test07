@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=yes">
+		<link rel="stylesheet" href="css/reset.css">
+		<!--<link rel="stylesheet" href="css/css/style.css">-->
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/mui.picker.all.css" />
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+		<link rel="stylesheet" href="css/caxun.css" />
+		<script type="text/javascript" src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/mui.picker.all.js" ></script>
+		<script src="js/Adaptation.js"></script>
+
+		<title>跨店零售</title>
+	</head>
+	<style>
+		table,
+		table tr th,
+		table .AA {
+			border: 1px solid #ccc;
+			text-align: center;
+		}
+		
+		table {
+			width: 90%;
+			min-height: 25px;
+			line-height: 25px;
+			text-align: center;
+			border-collapse: collapse;
+			margin: 0 auto;
+			font-size: 0.3rem;
+		}
+		#cehua{
+			width:80%;height:100%;background:white;position: absolute;top: 0;right:0;z-index:999;opacity:1;display: none;
+			
+		}
+		#ling{
+			width:20%;height:100%;position: absolute;top:0;left:0;z-index:999;display: none;    background: #000;
+            opacity: .3;
+		}
+		.pinpai {
+		    width: 30.5%;
+		    height: 50px;
+		    float: left;
+		    margin: 1% 0%;
+		    text-align: center;
+		    line-height: 50px;
+		    margin-left: 8px;
+		    background: rgba(242,243,244);
+		    color: rgba(89,98,120);
+		    font-size: .4rem;
+		}
+		.mypinpai{
+			    background: url(images/duigou.png)no-repeat 0px 0px;
+    background-size: 22%;
+    background-color: rgba(229,250,250);
+		}
+		.jibie{
+			width:100%;height:30px;font-size:.5rem;padding-left:15px;
+		}
+		.jibieda{
+			width: 100%;margin:10px;
+		}
+		.jibieda-top{
+			width:100%;height:30px;font-size:.5rem;padding-left: 15px;
+		}
+	</style>
+
+	<body class="index sale">
+		<div id="ling"></div>
+		<div id="cehua">
+			 <ul class="mui-table-view"> 
+		        <li class="mui-table-view-cell mui-collapse">
+		            <a class="mui-navigate-right" href="#">店铺品牌</a>
+		            <div class="mui-collapse-content" id="brand">
+	
+		            </div>
+		        </li>
+		    </ul>
+		     <ul class="mui-table-view"> 
+		        <li class="mui-table-view-cell mui-collapse">
+		            <a class="mui-navigate-right" href="#">店铺级别</a>
+		            <div class="mui-collapse-content" id="store">
+	
+		            </div>
+		        </li>
+		    </ul>
+		     <ul class="mui-table-view"> 
+		        <li class="mui-table-view-cell mui-collapse">
+		            <a class="mui-navigate-right" href="#">管辖区域</a>
+		            <div class="mui-collapse-content"style="padding-right:23px;    padding: 8px 0px;margin: 11px -15px -11px;">
+		            	<div class="jibieda">
+		            		<div class="jibieda-top" style="    font-size: .4rem;">一级</div>
+		            		<div id="managementup">
+		            		</div>
+		            	</div>
+		            	
+		            </div>
+		            <div class="mui-collapse-content"style="padding-right:23px;    padding: 8px 0px;margin: 11px -15px -11px;">
+		            	<div class="jibieda">
+		            		<div class="jibieda-top"style="    font-size: .4rem;">二级</div>
+		            		<div id="managementmiddle">
+		            		</div>
+		            	</div>
+		            	
+
+		        </li>
+		    </ul>
+		</div>
+		<div class="top">
+			<ul class="f-cb" id="nav">
+				<li data-id="1" class="nav-d">昨日</li>
+				<li data-id="2" class="nav-d">上周</li>
+				<li data-id="3" class="nav-d">本周</li>
+				<li data-id="4" class="nav-d">上月</li>
+				<li data-id="5" class="active nav-d">本月</li>
+				<li data-id="6" class="nav-d">本年至今</li>
+			</ul>
+		</div>
+		<div id="CH" style="width:100% ;height:50px;border-bottom: 1px solid #efefef;">
+			<div style="margin-left:10px;background:url(images/Select.png)no-repeat;width:13%;height:50px;background-size:100%;"></div>
+		</div>
+		<div style="height: 50px;line-height: 50px;text-align: right;font-size: .3rem;font-weight: bold;color:rgba(129,129,129) ;">
+			包含本店销售本店发货的数据
+			<div class="mui-switch mui-switch-mini mui-switch-blue" id="anniu" style="float:right; margin:10px 10px 10px 10px;">
+				<div class="mui-switch-handle"></div>
+			</div>
+		</div>
+		<div class="shipmentx" style="width:100%;background: #fff;">
+		  <div class="index-content f-cb" style="padding: 0;margin-top:0px;position: absolute;width: 98%;height: 100%;background: #fff;margin-left:1%">
+			  <table class='table-compare' id="area_rist">
+			    <tr>
+			      <th style="text-align: left;">指标</th>
+			      <th>合计</th>
+			      <th>NK</th>
+			      <th>AD</th>
+			    </tr>
+			  </table>
+			</div>
+	     </div>
+			<script type="text/javascript" src="js/echarts.mins.js"></script>
+			<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+			<script type="text/javascript" src="js/api.js"></script>
+	</body>
+
+</html>
+<script>
+	//头部导航
+	    var URL = "http://tel.runsa.cn:8177/bi_yhj/REALLY/bi/report/cross_sal/query";
+		var a_fh=[];
+		var b_fh=[];
+		var c_fh=[];
+		var d_fh=[];
+		var e_fh=[];
+		var f_fh=[];
+		var g_fh=[];
+		var h_fh=[];
+		var i_fh=[];
+		var j_fh=[];
+		var k_fh=[];
+		var l_fh=[];
+		var m_fh=[];
+		var n_fh=[];
+
+
+	   	var str=1
+	 $("#anniu").click(function(){
+		 str+=1
+		 if(str==1){
+			str=1
+		 }
+		 if(str!=1){
+			str=0
+		 }
+		 
+	 })
+	 $("#nav li").bind("click",function() {
+		data_id = $(this).attr("data-id");
+						$("#nav li").removeClass('active');
+						$("#nav li[data-id = '" + data_id + "']").addClass('active');
+					let index = $(this).index() + 1;
+						var mouth="";
+					if(index==1){
+					mouth=1;
+						var list = []
+					}
+					else if(index==2){ 
+					mouth=2
+					}
+					else if(index==3){ 
+					mouth=3
+					}
+					else if(index==4){ 
+					mouth=4
+					}
+					else if(index==5){ 
+					mouth=5
+					}
+					else if(index==6){ 
+					mouth=6
+					}
+					var params = {
+						"userId": '15975531236',
+						"va_months":mouth ,
+						"local_send_flag": str,
+						"areacode1": "",
+						"org_level_id": "",
+						"org_brd_id": ""
+					};
+		           first(params);
+				})
+	 	 function first(params){	
+					$.ajax({ 
+					url: URL,
+					type: 'POST',
+					data:params,
+					dataType: 'json',
+					success: function(obj){
+                               console.log(obj)
+							list = obj.data.list;
+							var a=list[0]
+							var b=list[1]
+							a_fh=[]; b_fh=[]; c_fh=[]; d_fh=[]; e_fh=[]; f_fh=[]; g_fh=[]; h_fh=[];
+							i_fh=[]; j_fh=[]; k_fh=[]; l_fh=[]; m_fh=[]; n_fh=[];
+							
+							for (var i = 0; i < list.length; i++) {
+								a_fh = a_fh.concat(list[i].cross_org_num)
+								b_fh = b_fh.concat(list[i].cross_zero_org_nm)
+								c_fh = c_fh.concat(list[i].cross_sal_amt)
+								d_fh = d_fh.concat(list[i].cross_sal_amt_ratio)
+								e_fh = e_fh.concat(list[i].cross_sal_qty)
+								f_fh = f_fh.concat(list[i].wareh_send_qty)
+								g_fh = g_fh.concat(list[i].store_send_qty)
+								h_fh = h_fh.concat(list[i].sal_nos)
+								i_fh = i_fh.concat(list[i].cross_upt)
+								j_fh = j_fh.concat(list[i].cross_atv)
+								k_fh = k_fh.concat(list[i].no_sku_sal_amt)
+								l_fh = k_fh.concat(list[i].no_sku_sal_amt_ratio)
+								m_fh = l_fh.concat(list[i].no_size_sal_amt)
+								n_fh = m_fh.concat(list[i].no_size_sal_amt_ratio)
+							}
+                              var aa=0;
+							  var bb=0;
+							  var cc=0;
+							  var dd=0;
+							  var ee=0;
+							  var ff=0;
+							  var gg=0;
+							  var hh=0;
+							  var ii=0;
+							  var jj=0;
+							  var kk=0;
+							  var ll=0;
+							  var mm=0;
+							  var nn=0;
+		                          	for (var i = 0; i < c_fh.length; i++) {
+											aa=a_fh[0]+a_fh[1]
+									}
+		                          		for (var i = 0; i < c_fh.length; i++) {
+											 bb=b_fh[0]+b_fh[1]
+									}
+		                          			for (var i = 0; i < c_fh.length; i++) {
+											cc=(c_fh[0]+c_fh[1]).toFixed(1)
+									}
+	                                	for (var i = 0; i < c_fh.length; i++) {
+											dd=d_fh[0]+d_fh[1]
+									}
+	                                	for (var i = 0; i < c_fh.length; i++) {
+											ee=e_fh[0]+e_fh[1]
+									}
+	                                	for (var i = 0; i < c_fh.length; i++) {
+											 ff=f_fh[0]+f_fh[1]
+									}
+	                                	for (var i = 0; i < c_fh.length; i++) {
+											gg=g_fh[0]+g_fh[1]
+									}
+	                                	for (var i = 0; i < c_fh.length; i++) {
+											hh=h_fh[0]+h_fh[1]
+									}
+	                                	for (var i = 0; i < c_fh.length; i++) {
+											 ii=i_fh[0]+i_fh[1]
+									}
+	                                	for (var i = 0; i < c_fh.length; i++) {
+											jj=j_fh[0]+j_fh[1]
+									}
+	                                	for (var i = 0; i < c_fh.length; i++) {
+											kk=k_fh[0]+k_fh[1]
+									}
+	                                	for (var i = 0; i < c_fh.length; i++) {
+											 ll=l_fh[0]+l_fh[1]
+									}
+	                                	for (var i = 0; i < c_fh.length; i++) {
+											mm=m_fh[0]+m_fh[1]
+									}
+	                                for (var i = 0; i < c_fh.length; i++) {
+											 nn=n_fh[0]+n_fh[1]
+									}
+	                                                          
+								$('#area_rist').empty();
+				                    $('#area_rist').append('<tr><th>指标</th><th>合计</th><th>NK</th><th>AD</th></tr>')
+									$('#area_rist').append('<tr><td>已实施跨店零售店数</td><td>'+aa+'</td><td>'+a_fh[0]+'</td><td>'+a_fh[1]+'</td></tr>')//表单  
+									$('#area_rist').append('<tr><td>已实施但无零售店数</td><td>'+bb+'</td><td>'+b_fh[0]+'</td><td>'+b_fh[1]+'</td></tr>')//表单  
+									$('#area_rist').append('<tr><td>跨店零售金额</td><td>'+cc+'</td><td>'+c_fh[0]+'</td><td>'+c_fh[1]+'</td></tr>')//表单  
+									$('#area_rist').append('<tr><td>跨店零售额占比</td><td>'+dd+'%</td><td>'+d_fh[0]+'%</td><td>'+d_fh[1]+'%</td></tr>')//表单  
+									$('#area_rist').append('<tr><td>跨店零售商品数量</td><td>'+ee+'</td><td>'+e_fh[0]+'</td><td>'+e_fh[1]+'</td></tr>')//表单  
+									$('#area_rist').append('<tr><td>仓库发货件数</td><td>'+ff+'</td><td>'+f_fh[0]+'</td><td>'+f_fh[1]+'</td></tr>')//表单  
+									$('#area_rist').append('<tr><td>店铺发货件数</td><td>'+gg+'</td><td>'+g_fh[0]+'</td><td>'+g_fh[1]+'</td></tr>')//表单  
+									$('#area_rist').append('<tr><td>跨店零售单数</td><td>'+hh+'</td><td>'+h_fh[0]+'</td><td>'+h_fh[1]+'</td></tr>')//表单  
+									$('#area_rist').append('<tr><td>跨店零售客单量</td><td>'+ii+'</td><td>'+i_fh[0]+'</td><td>'+i_fh[1]+'</td></tr>')//表单  
+									$('#area_rist').append('<tr><td>跨店零售客单价</td><td>'+jj+'</td><td>'+j_fh[0]+'</td><td>'+j_fh[1]+'</td></tr>')//表单  
+									$('#area_rist').append('<tr><td>店无款的零售金额</td><td>'+kk+'</td><td>'+k_fh[0]+'</td><td>'+k_fh[1]+'</td></tr>')//表单  
+									$('#area_rist').append('<tr><td>店无款的零售金额占比</td><td>'+ll+'%</td><td>'+l_fh[0]+'%</td><td>'+l_fh[1]+'%</td></tr>')//表单  
+									$('#area_rist').append('<tr><td>店缺码的零售金额</td><td>'+mm+'</td><td>'+m_fh[0]+'</td><td>'+m_fh[1]+'</td></tr>')//表单  
+									$('#area_rist').append('<tr><td>店缺码的零售金额占比</td><td>'+nn+'</td><td>'+n_fh[0]+'</td><td>'+n_fh[1]+'</td></tr>')//表单  
+							}
+						});
+		 }
+	 	  var params = {
+						"userId": '15975531236',
+						"va_months": 5,
+						"local_send_flag": str,
+						"areacode1": "",
+						"org_level_id": "",
+						"org_brd_id": ""
+					};
+      first(params);
+	 //侧滑
+	 $('#CH').click(function(){
+	$("#cehua").show(1000)
+	$("#ling").show()
+	})
+	$('#ling').click(function(){
+		$("#cehua").hide()
+		$(this).hide()
+	})
+</script>
+<script src="js/guanxiaqu.js"></script>
+<script src="js/dianpupingpai.js"></script>
+<script src="js/dianpujibie.js"></script>

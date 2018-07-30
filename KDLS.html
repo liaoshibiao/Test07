@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=yes">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/KDLS.css" />
+  <link rel="stylesheet" href="css/mui.picker.all.css" />
+  <link rel="stylesheet" href="css/mui.min.css" />
+  <link rel="stylesheet" href="css/caxun.css" />
+  <title>跨店零售</title>
+</head>
+<style>
+	table,
+		table tr th,
+		table .AA {
+			border: 1px solid #ccc;
+			text-align: center;
+		}
+		table {
+			width: 90%;
+			min-height: 25px;
+			line-height: 25px;
+			text-align: center;
+			border-collapse: collapse;
+			margin: 0 auto;
+			font-size: 0.3rem;
+		}
+		#cehua{
+			width:90%;height:100%;background:black;position: absolute;top: 0;right:0;z-index:999;opacity:1;display: none;
+			
+		}
+		#ling{
+			width:10%;height:100%;position: absolute;top:0;left:0;z-index:999;display: none;
+		}
+		.pinpai{
+			width:30%;height:50px;float:left;margin:1% 0%;text-align: center;line-height:50px;
+			margin-left: 8px;border:1px solid #DCDCDC;
+			background: #DCDCDC;
+			border-radius: 5px;
+		}
+		.mypinpai{
+			border: 1px solid black;
+		    background: url(images/gou.jpg)no-repeat 0px 10px;
+		    background-size: 45%;
+}
+		}
+		.jibie{
+			width:100%;height:30px;font-size:.5rem;padding-left:15px;
+		}
+		.jibieda{
+			width: 100%;margin:10px;
+		}
+		.jibieda-top{
+			width:100%;height:30px;font-size:.5rem;padding-left: 15px;
+		}
+		#r_top{
+			color:#929292;position: absolute;right:3%;top:57%;font-size:0.3rem;z-index:666;
+		}
+		#r_dow{
+			color:#393F4D;position: absolute;right:3%;top:69%;font-size:0.3rem;z-index:666;
+		}
+		#l_dow{
+			color:#929292;position: absolute;left:3%;top:69%;font-size:0.3rem;z-index:666;
+		}
+		#l_top{
+			color:#929292;position: absolute;left:3%;top:57%;font-size:0.3rem;z-index:666;
+		}
+</style>
+<body class="index sale">
+			<div id="ling"></div>
+		<div id="cehua">
+			 <ul class="mui-table-view"> 
+		        <li class="mui-table-view-cell mui-collapse">
+		            <a class="mui-navigate-right" href="#">店铺品牌</a>
+		            <div class="mui-collapse-content" id="brand">
+	
+		            </div>
+		        </li>
+		    </ul>
+		     <ul class="mui-table-view"> 
+		        <li class="mui-table-view-cell mui-collapse">
+		            <a class="mui-navigate-right" href="#">店铺级别</a>
+		            <div class="mui-collapse-content" id="store">
+	
+		            </div>
+		        </li>
+		    </ul>
+		     <ul class="mui-table-view"> 
+		        <li class="mui-table-view-cell mui-collapse">
+		            <a class="mui-navigate-right" href="#">管辖区域</a>
+		            <div class="mui-collapse-content"style="padding-right:23px;    padding: 8px 0px;margin: 11px -15px -11px;">
+		            	<div class="jibieda">
+		            		<div class="jibieda-top" style="    font-size: .4rem;">一级</div>
+		            		<div id="managementup">
+		            		</div>
+		            	</div>
+		            	
+		            </div>
+		            <div class="mui-collapse-content"style="padding-right:23px;    padding: 8px 0px;margin: 11px -15px -11px;">
+		            	<div class="jibieda">
+		            		<div class="jibieda-top"style="    font-size: .4rem;">二级</div>
+		            		<div id="managementmiddle">
+		            		</div>
+		            	</div>
+		        </li>
+		    </ul>
+		</div>
+		<div class="top">
+			  <ul class="f-cb" id="nav">
+			    <li data-id="1" class="nav-d">昨日</li>
+			    <li data-id="2" class="nav-d">上周</li>
+			    <li data-id="3" class="nav-d">本周</li>
+			    <li data-id="4" class="nav-d">上月</li>
+			    <li data-id="5" class="active nav-d">本月</li>
+			    <li data-id="6" class="nav-d">本年至今</li>
+			  </ul>
+		</div>
+		<div class="sideslip"><!--侧滑-->
+			<div id="CH"></div>
+		</div>
+		<div class="pull-down"><!--下拉选择-->
+			<span class="pull-downText" id="Pull-text">零售金额</span>
+			<span class="interval">:</span>
+			<span class="pull-downText" id="pull-money">...</span>
+			<span class="pull-downAlert mui-icon mui-icon-arrowdown"></span>
+		</div>
+		<div class="Switch_box"><!--开关-->
+			<div id="mySwitch" class="mui-switch mui-switch-mini ">
+			  <div class="mui-switch-handle"></div>
+			</div>
+			<label>包含本店销售本店发货的数据</label>
+		</div>
+		
+		<div class="Summations">
+				<div class="Summations_Left s_data " id="zuobianzhanbi">
+					<p id="zhanbi">...</p>
+					<span id="z">对店铺总零售占比<span>
+					<span id="l_top">▲</span>
+					<span id="l_dow">▼</span>
+				</div>
+				<div class="Summations_Shop">
+					<span>店</span>
+				</div>
+				<div class="Summations_Right s_data" id="youbianjine">
+					<p id="jine">...</p>
+					<span id="j">跨店零售金额<span>
+					<span id="r_top">▲</span>
+					<span id="r_dow">▼</span>
+				</div>
+				<div class="data_list_l">
+					<ul id="L-wid">
+					</ul>
+				</div>
+				<div class="data_list_m">
+					<ul id="M-wid">
+						
+					</ul>
+				</div>
+				<div class="data_list_r">
+					<ul id="R-wid">
+					</ul>
+				</div>
+		</div>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/Adaptation.js"></script>
+<script type="text/javascript" src="js/api.js" ></script>
+<script type="text/javascript" src="js/mui.min.js" ></script>
+<script type="text/javascript" src="js/mui.picker.all.js" ></script>
+<script type="text/javascript" src="js/Nav.js" ></script>
+<script type="text/javascript" src="js/kuadianlingshou_data.js" ></script>
+<script>
+$('#CH').click(function(){
+	$("#cehua").show(1000)
+	$("#ling").show()
+})
+$('#ling').click(function(){
+	$("#cehua").hide()
+	$(this).hide()
+})
+
+
+	window.onload = function(){
+//My_dataList(par);
+//			MR()
+	}
+</script>
